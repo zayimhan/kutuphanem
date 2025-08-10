@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kütüphanem - Giriş</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style/main.css" />
+</head>
+
+<body>
+
+  <!-- Giriş Formu -->
+  <section id="login-section">
+    <h2>Giriş Yap</h2>
+    <input type="email" id="login-email" placeholder="E-posta" required autocomplete="off" />
+    <input type="password" id="login-password" placeholder="Şifre" required autocomplete="off" />
+    <button id="login-btn">Giriş Yap</button>
+    <div class="toggle-link">
+      Hesabın yok mu? <a id="show-register">Kayıt ol</a>
+    </div>
+  </section>
+
+  <!-- Kayıt Formu -->
+  <section id="register-section" style="display: none;">
+    <h2>Kayıt Ol</h2>
+    <input type="email" id="register-email" placeholder="E-posta" required autocomplete="off" />
+    <input type="password" id="register-password" placeholder="Şifre" required autocomplete="off" />
+    <button id="register-btn">Kayıt Ol</button>
+    <div class="toggle-link">
+      Zaten hesabın var mı? <a id="show-login">Giriş yap</a>
+    </div>
+  </section>
+
+  <!-- Girişten sonra görünen Ana Menü -->
+  <section id="main-panel" style="display: none;">
+    <div class="container">
+      <h2>Hoş geldin <span id="user-email"></span>!</h2>
+      <!-- Ana Menü Kartları -->
+      <div class="panel" id="btn-library">📚 Kütüphanem<div>kitap ekle , kutuphaneyi görüntüle</div>
+      </div>
+      <div class="panel" id="btn-reading">📖 Şu an Okuduklarım</div>
+      <div class="panel" id="btn-random">🎲 Random Seçici</div>
+      <div class="panel" id="btn-blog">📝 Değerlendirmeler</div> <!-- ✨ yeni eklendi -->
+      <button id="logout-btn">Çıkış Yap</button>
+    </div>
+  </section>
+
+  <!-- Kütüphane 
+  <section id="library-view" class="page" style="display: none;">
+    <h2>📚 Kütüphanem</h2>
+    <ul id="library-list"></ul>
+    
+    <input id="book-title" placeholder="Kitap adı" />
+    <input id="book-author" placeholder="Yazar" />
+    <button id="add-book-btn">➕ Ekle</button>
+    <button class="back-btn">⬅ Geri</button>
+  
+  </section>-->
+
+  <section id="library-view" class="page" style="display: none;">
+    <h2>📚 Kütüphanem</h2>
+    <ul id="library-list"></ul>
+
+    <div class="panel" id="btn-add">➕ yeni kitap ekle</div>
+    <button class="back-btn">⬅ Geri</button>
+  </section>
+
+  <!-- Kitap Ekleme -->
+  <section id="adding-book-view" class="page" style="display: none;">
+    <h2>📚 Kitap Ekle</h2>
+    <input id="book-title" placeholder="Kitap adı" required />
+    <input id="book-author" placeholder="Yazar" required />
+    <button id="add-book-btn">➕ Ekle</button>
+    <button class="back-btnk">⬅ Geri</button>
+  </section>
+
+  <!-- Okuduklarım -->
+  <section id="reading-view" class="page" style="display: none;">
+    <h2>📖 Şu an Okuduklarım</h2>
+    <ul id="reading-list"></ul>
+    <button class="back-btn">⬅ Geri</button>
+  </section>
+
+  <!-- Rastgele -->
+  <section id="random-view" class="page" style="display: none;">
+    <h2>🎲 Random Seçici</h2>
+    <button id="random-new-btn">Yeni Keşif (Okunmamışlardan)</button>
+    <button id="random-reread-btn">Tekrar Oku (Okunanlardan)</button>
+    <div id="random-result" style="margin-top:1.5rem; font-size:1rem;"></div>
+    <button class="back-btn">⬅ Geri</button>
+  </section>
+
+  <section id="blog-view" class="page" style="display:none;">
+  <h2>🖊️ Blog</h2>
+  <textarea id="blog-input" placeholder="Kitap hakkında notunu yaz..." rows="6" style="width:100%;"></textarea>
+  <button id="save-blog-btn">Kaydet</button>
+  <button class="back-btn">⬅ Geri</button>
+</section>
+
+
+  <script type="module" src="./js/app.js"></script>
+
+
+</body>
+
+</html>

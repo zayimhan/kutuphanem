@@ -1,0 +1,865 @@
+/* ==========================================================================
+   Temel Ayarlar ve Fontlar
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #4e342e;
+  color: #d7ccc8;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Genel Elemanlar
+   ========================================================================== */
+section {
+  background: #3e2723;
+  border: 4px solid #a1887f;
+  box-shadow: 0 0 20px #a1887f;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: none;
+}
+
+h2,
+h3 {
+  text-align: center;
+  color: #fbc02d;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 2px solid #a1887f;
+  background-color: #212121;
+  color: #ffe0b2;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.5rem;
+}
+
+input::placeholder {
+  color: #a1887f99;
+}
+
+button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem;
+  background-color: #fbc02d;
+  color: #3e2723;
+  border: 2px solid #a1887f;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.55rem;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
+  margin: 2rem auto 0 auto;
+}
+
+
+button:hover {
+  background-color: #ffe082;
+  border-color: #ffe082;
+}
+
+.toggle-link {
+  margin-top: 1.5rem;
+  font-size: 0.5rem;
+  color: #d7ccc8;
+  text-align: center;
+}
+
+.toggle-link a {
+  color: #fbc02d;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Giriş / Kayıt / Ekleme Formları
+   ========================================================================== */
+#login-section,
+#register-section,
+#adding-book-view,
+#random-view {
+  background: #3e2723;
+  border: 4px solid #a1887f;
+  box-shadow: 0 0 20px #a1887f;
+  padding: 1.5rem;
+  margin: 4rem auto 2rem auto;
+  max-width: 400px;
+  border-radius: 12px;
+}
+
+/* ==========================================================================
+   Ana Panel ve Sayfa Efektleri
+   ========================================================================== */
+#main-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: repeating-linear-gradient(to bottom,
+      #3e2723,
+      #3e2723 2px,
+      #4e342e 2px,
+      #4e342e 4px);
+  padding: 2rem;
+}
+
+.book-page {
+  width: 90%;
+  max-width: 900px;
+  height: 90%;
+  background-color: #3e2723;
+  border: 6px solid #a1887f;
+  box-shadow: 0 0 40px #a1887f80;
+  padding: 3rem;
+  font-family: 'Press Start 2P', cursive;
+  overflow-y: auto;
+}
+
+.page {
+  display: none;
+}
+
+.page-transition {
+  animation: pageFlip 2s ease-in-out;
+}
+
+@keyframes pageFlip {
+  0% {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+
+  50%,
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Panel Butonları ve Kullanıcı Paneli
+   ========================================================================== */
+#main-panel .panel {
+  border: 2px dashed #a1887f;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  font-size: 0.8rem;
+  cursor: pointer;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+#main-panel .panel:hover {
+  background-color: #5d4037;
+}
+
+#main-panel h2 {
+  color: #fbc02d;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#main-panel button {
+  margin-top: 2rem;
+  font-size: 0.6rem;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+#logout-btn {
+  display: block;
+  margin: 2rem auto 0 auto;
+  font-size: 0.6rem;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+/* Giriş Sonrası */
+#logout-section h2 {
+  font-size: 0.7rem;
+  color: #c5e1a5;
+}
+
+.panel {
+  border: 2px dashed #a1887f;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.panel:hover {
+  background-color: #5d4037;
+  box-shadow: 0 0 12px #fbc02d;
+}
+
+.panel h3 {
+  font-size: 0.7rem;
+  margin-bottom: 1rem;
+  color: #fbc02d;
+}
+
+.panel ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.5rem;
+  color: #ffe0b2;
+}
+
+/* ==========================================================================
+   Kütüphane Listesi (Kitaplar)
+   ========================================================================== */
+#library-view {
+  max-width: none;
+  margin: 0;
+  padding: 2rem 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+#library-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 1rem 0;
+  list-style-type: none;
+}
+
+#library-list li {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #5d4037 60%, #a1887f 100%);
+  border: 3px solid #fbc02d;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #a1887f55;
+  padding: 1.5rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 180px;
+  max-width: 220px;
+  min-height: 180px;
+}
+
+#library-list li:hover {
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow: 0 8px 32px #fbc02d99;
+}
+
+#library-list li .book-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffe082;
+  margin: 0.2rem 0 0.5rem;
+}
+
+#library-list li .book-author {
+  font-size: 0.95rem;
+  color: #ffe0b2;
+  margin-bottom: 0.7rem;
+}
+
+#library-list li .book-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+#library-list li .book-status-label {
+  color: #fbc02d;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+#library-list li select {
+  margin-left: 0.5rem;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  background: #212121;
+  color: #ffe0b2;
+  border: 2px solid #a1887f;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+}
+
+#library-list li button {
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.3rem 0.7rem;
+  margin-left: 0.5rem;
+  transition: background 0.2s;
+}
+
+#library-list li button:hover {
+  background: #ff7961;
+  transform: scale(1.1);
+}
+
+/* Yeni Kitap Ekle Butonu */
+#btn-add {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.6rem;
+  border: 2px dashed #a1887f;
+  max-width: 300px;
+  margin-top: 1rem;
+  cursor: pointer;
+  color: #d7ccc8;
+  transition: all 0.3s ease;
+  margin: 2rem auto 0 auto;
+}
+
+/*#logout-btn {
+  display: block;
+  margin: 2rem auto 0 auto;
+  font-size: 0.6rem;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  padding: 0.5rem;
+}*/
+
+#btn-add:hover {
+  background-color: #5d4037;
+  box-shadow: 0 0 10px #fbc02d;
+  color: #fbc02d;
+}
+
+/* ==========================================================================
+   Reading Listesi (Kitaplar)
+   ========================================================================== */
+#reading-view {
+  max-width: none;
+  margin: 0;
+  padding: 2rem 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+#reading-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 1rem 0;
+  list-style-type: none;
+}
+
+#reading-list li {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #5d4037 60%, #a1887f 100%);
+  border: 3px solid #fbc02d;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #a1887f55;
+  padding: 1.5rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 180px;
+  max-width: 220px;
+  min-height: 180px;
+}
+
+#reading-list li:hover {
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow: 0 8px 32px #fbc02d99;
+}
+
+#reading-list li .book-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffe082;
+  margin: 0.2rem 0 0.5rem;
+}
+
+#reading-list li .book-author {
+  font-size: 0.95rem;
+  color: #ffe0b2;
+  margin-bottom: 0.7rem;
+}
+
+#reading-list li .book-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+#reading-list li .book-status-label {
+  color: #fbc02d;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+#reading-list li select {
+  margin-left: 0.5rem;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  background: #212121;
+  color: #ffe0b2;
+  border: 2px solid #a1887f;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+}
+
+#reading-list li button {
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.3rem 0.7rem;
+  margin-left: 0.5rem;
+  transition: background 0.2s;
+}
+
+#reading-list li button:hover {
+  background: #ff7961;
+  transform: scale(1.1);
+}
+
+
+/* ==========================================================================
+   Random sayfası (Kitaplar)
+   ========================================================================== */
+#random-view {
+  max-width: none;
+  margin: 0;
+  padding: 2rem 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+#random-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 1rem 0;
+  list-style-type: none;
+}
+
+#random-result li {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #5d4037 60%, #a1887f 100%);
+  border: 3px solid #fbc02d;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #a1887f55;
+  padding: 1.5rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 180px;
+  max-width: 220px;
+  min-height: 180px;
+  margin: 0;
+}
+
+#random-result li:hover {
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow: 0 8px 32px #fbc02d99;
+}
+
+#random-result li .book-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffe082;
+  margin: 0.2rem 0 0.5rem;
+}
+
+#random-result li .book-author {
+  font-size: 0.95rem;
+  color: #ffe0b2;
+  margin-bottom: 0.7rem;
+}
+
+#random-result li .book-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+#random-result li .book-status-label {
+  color: #fbc02d;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+#random-result li li select {
+  margin-left: 0.5rem;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  background: #212121;
+  color: #ffe0b2;
+  border: 2px solid #a1887f;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+}
+
+#random-result li li button {
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.3rem 0.7rem;
+  margin-left: 0.5rem;
+  transition: background 0.2s;
+}
+
+#random-result li li button:hover {
+  background: #ff7961;
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   blog sayfası (Kitaplar)
+   ========================================================================== */
+
+#all-blogs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  /* 1–N sütun */
+  gap: 1.2rem;
+  align-items: start;
+}
+
+/* Blog kutusu */
+.blog-box {
+  border: 2px dashed #a1887f;
+  max-width: unset;
+  width: 100%;
+  background: #3e2723;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+  color: #fff;
+  max-width: 600px;
+  word-break: break-word;
+}
+
+.book-title {
+  color: #ffe082;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.book-author {
+  color: #ffe0b2;
+  margin-bottom: 0.5rem;
+}
+
+.blog-label {
+  margin-top: 0.7rem;
+  color: #fbc02d;
+  font-weight: bold;
+}
+
+.blog-text {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0.3rem;
+  color: #fff;
+}
+
+.blog-date {
+  margin-top: 0.3rem;
+  color: #a1887f;
+  font-size: 0.8rem;
+}
+
+.see-more-btn {
+  margin-top: 0.5rem;
+  background: #fbc02d;
+  color: #3e2723;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.3rem 0.7rem;
+  transition: background 0.2s;
+}
+
+.see-more-btn:hover {
+  background: #ffe082;
+}
+
+/* Blog modal arkaplanı */
+.blog-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Blog modal kutusu */
+.blog-modal-box {
+  background: #3e2723;
+  border: 3px solid #fbc02d;
+  border-radius: 14px;
+  padding: 1.2rem 1rem 1.2rem 1rem;
+  max-width: 480px;
+  width: 90vw;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 8px 32px #fbc02d99;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+/* Çarpı butonu */
+.blog-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  max-width: 25px;
+  right: 0.7rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #fbc02d;
+  cursor: pointer;
+  z-index: 1;
+  padding: 0;
+  line-height: 1;
+}
+
+.blog-modal-edit {
+  position: absolute;
+  max-width: 25px;
+  top: 0.5rem;
+  left: 0.7rem;
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  color: #fbc02d;
+  cursor: pointer;
+  z-index: 1;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Kaydet butonu */
+.blog-modal-save {
+  background: #fbc02d;
+  color: #3e2723;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.3rem 0.7rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* responsive */
+/* ==========================================================================
+   RESPONSIVE KATMANI – mevcut stilin SONUNA ekle
+   ========================================================================== */
+
+/* Küçük telefonlar (≤480px) */
+@media (max-width: 480px) {
+  body {
+    /* Metinler çok küçülmesin */
+    font-size: 14px;
+  }
+
+  section {
+    padding: 1rem;
+    margin: 1rem auto;
+    border-width: 3px;
+  }
+
+  #main-panel {
+    /* Tam ekran yüksekliği yerine içerik kadar uzasın */
+    height: auto;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+
+  .book-page {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    /* 90% yerine akışa bırakalım */
+    padding: 1.25rem;
+    border-width: 4px;
+  }
+
+  h2,
+  h3 {
+    font-size: 0.9rem;
+    /* Başlıklar biraz daha okunur olsun */
+    margin-bottom: 1rem;
+  }
+
+  input {
+    font-size: 0.65rem;
+  }
+
+  button,
+  #main-panel button,
+  #logout-btn,
+  #btn-add {
+    max-width: 100%;
+    font-size: 0.7rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Kart gridleri tek/sıkı kolona düşsün */
+  #library-list,
+  #reading-list {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+  }
+
+  #library-list li,
+  #reading-list li,
+  #random-result li {
+    min-width: 0;
+    max-width: 100%;
+    min-height: 160px;
+    padding: 1rem 0.75rem 0.75rem;
+  }
+
+  /* Blog listesi dar ekranda tek sütun */
+  #all-blogs {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .blog-box {
+    padding: 0.9rem;
+    border-width: 2px;
+    max-width: 100%;
+  }
+
+  .blog-modal-box {
+    width: 92vw;
+    max-width: 92vw;
+    padding: 1rem 0.85rem;
+  }
+}
+
+/* Tablet (481–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  section {
+    padding: 1.25rem;
+    margin: 1.25rem auto;
+  }
+
+  #main-panel {
+    height: auto;
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+
+  .book-page {
+    width: 95%;
+    max-width: 760px;
+    height: auto;
+    padding: 2rem;
+  }
+
+  #library-list,
+  #reading-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  #random-result {
+    gap: 1rem;
+  }
+
+  .blog-modal-box {
+    width: 85vw;
+    max-width: 620px;
+  }
+}
+
+/* Büyük ekranlar (≥1200px) – biraz rahatlatma */
+@media (min-width: 1200px) {
+  .book-page {
+    max-width: 1000px;
+    padding: 3rem;
+  }
+
+  #library-list,
+  #reading-list {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  #all-blogs {
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  }
+
+  .blog-modal-box {
+    max-width: 720px;
+  }
+}
+
+/* Hareket hassasiyeti olan kullanıcılar için animasyonu azalt */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    animation: none !important;
+  }
+}
